@@ -24,14 +24,29 @@
     <br>
     <br>
 
-    <div style="text-align: center; margin-left: 250px; margin-right: 250px; margin-bottom: 150px;">
-        <p><img src="{% static 'images/architektura.jpg' %}" /></p>
-        <p>Aplikacja składa się z trzech kontenerów: frontend, API oraz bazy danych.
-            Frontend przedstawia interfejs użytownika oraz komunikuje się z API.
-            API oblicza wartość ciągu Fibonacciego na podstawie liczby otrzymanej z konteneru
-            frontend i komunikuje się z postresql BD w celu zapisania wartości (Metoda POST).
-            W przypadku metody GET, API żąda zwrócenia ostanich 10 zapisanych wartości z bazy danych.
+    <div style="text-align: center; margin-left: 250px; margin-right: 250px; margin-bottom: 150px">
+        <p>
+            PFSWCHO zadanie 1 Daniel Florek Sprawozdanie <br>
+
+            Link github - <a
+                href="https://github.com/BlazingDeer/pfswcho_zad1">https://github.com/BlazingDeer/pfswcho_zad1</a>
         </p>
+        <br>
+        <p>Frontend jest na http://127.0.0.1:8000/<br>
+
+            API jest na http://api:8002/api/v1/fibseq/ <br>
+
+            BD jest na domyślnym porcie 5432 i jest połączone tylko z API, nie można się połączyć z zewnątrz. </p>
+        <br>
+
+        <p>Aplikacja składa się z trzech kontenerów: frontend, API oraz bazy danych. Frontend przedstawia interfejs
+            użytkownika oraz komunikuje się z API.
+            API oblicza wartość ciągu Fibonacciego na podstawie liczby otrzymanej z konteneru
+            frontend i komunikuje się z postgresql BD w celu zapisania wartości (Metoda POST).
+            W przypadku metody GET, API zwraca ostanie 10 zapisanych wartości z bazy danych.
+        </p>
+        <p><img src="{% static 'images/architektura.jpg' %}" /></p>
+        <br>
         <p>
             Frontend został napisany przy użyciu <a href="https://docs.djangoproject.com/en/4.0/releases/3.2/">
                 frameworka Django</a> w języku python a komunikacja pomiędzy frontendem a API jest zrealizowana
@@ -42,7 +57,7 @@
         <p>API również zostało wykonane w języku python przy pomocy Django oraz
             <a href="https://www.django-rest-framework.org/">Django Rest Framework</a>.
             Zachowuje się w nim model bazy danych oraz kod obliczający wartość ciągu.
-            Serializer przekłada model na obiekt json, natomiast views pozwalają na komunikację API z frontendem.
+            Serializer przekłada model na obiekt json, natomiast views pozwalają na komunikację CRUD API z frontendem.
             Połączenie z DB jest automatycznie wykonywane przez Django przy podaniu odpowiednich ustawień dla projektu.
         </p>
         <p><img src="{% static 'images/api_model.jpg'%}" alt="model bazy danych" /></p>
@@ -50,13 +65,14 @@
         <p><img src="{% static 'images/api_view.jpg'%}" alt="views - widoki API" /></p>
         <p><img src="{% static 'images/api_db.jpg'%}" alt="Połączenie z bazą danych" /></p>
         <br>
-        <p>Baza danych jest kontenerem Dockera i oprócz hasła i nazwy użytkownika nic nie zostało zmienione.</p>
-        <p><img src="{% static 'images/db_docker.jpg'%}" alt="docker-compose postresql" /></p>
-        <br>
-        <p>Wszystkie kontenery są połączone poprzez docker-compose.</p>
+        <p>Baza danych jest kontenerem Dockera i oprócz hasła i nazwy użytkownika nic nie zostało zmienione.
+            Wszystkie kontenery są połączone poprzez docker-compose i są uruchamiane poprzez polecenie:
+            <br>
+            <b>docker-compose up -d --build </b>
+        </p>
+
         <p><img src="{% static 'images/dc.jpg'%}" alt="docker-compose" /></p>
-        <p>wszystkie kontenery są uruchamiane poprzez polecenie:</p>
-        <p><b>docker-compose up -d --build</b></p>
+
     </div>
 </body>
 
