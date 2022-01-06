@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>pfswcho_zad1 Daniel Florek Fibonacci Calculator</title>
+</head>
+
+<body>
+    <h1>Realizacja zadania nr1 w ramach laboratorium PFSwCO Daniel Florek</h1>
+
+    <br>
+    <br>
+    <h2>Fibonacci Calculator</h2>
+    <br>
+    <br>
+    <p><a href="{% url 'home' %}">Home</a></p>
+    <p><a href="{% url 'fib_cal' %}">Fibonacci Calculator</a></p>
+    <p><a href="{% url 'fib_docs' %}">Documentation</a> </p>
+    <br>
+    <br>
+
+    {% if wynik is not null %}
+    <h3>Wynik dla k={{wynik.number}} : {{wynik.result}} </h3>
+    {% endif %}
+    <form action="{% url 'fib_cal' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Wyślij">
+    </form>
+
+    <br>
+    <br>
+
+    {% if fib_seq_result is not null %}
+    <p>Ostatnie Wyniki:</p>
+    <ul>
+        {% for res in fib_seq_result %}
+        <li>k = {{ res.number }} || wynik = {{res.result}}</li>
+        {% endfor %}
+
+    </ul>
+    {% endif %}
+
+
+</body>
+
+</html>

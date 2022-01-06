@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>pfswcho_zad1 Daniel Florek Documentation</title>
+</head>
+
+<body>
+    <h1>Realizacja zadania nr1 w ramach laboratorium PFSwCO Daniel Florek</h1>
+    <br>
+    <br>
+    <h2>Dokumentacja</h2>
+    <br>
+    <br>
+
+    <p><a href="{% url 'home' %}">Home</a></p>
+    <p><a href="{% url 'fib_cal' %}">Fibonacci Calculator</a></p>
+    <p><a href="{% url 'fib_docs' %}">Documentation</a> </p>
+
+    <br>
+    <br>
+
+    <div style="text-align: center; margin-left: 250px; margin-right: 250px; margin-bottom: 150px;">
+        <p><img src="{% static 'images/architektura.jpg' %}" /></p>
+        <p>Aplikacja składa się z trzech kontenerów: frontend, API oraz bazy danych.
+            Frontend przedstawia interfejs użytownika oraz komunikuje się z API.
+            API oblicza wartość ciągu Fibonacciego na podstawie liczby otrzymanej z konteneru
+            frontend i komunikuje się z postresql BD w celu zapisania wartości (Metoda POST).
+            W przypadku metody GET, API żąda zwrócenia ostanich 10 zapisanych wartości z bazy danych.
+        </p>
+        <p>
+            Frontend został napisany przy użyciu <a href="https://docs.djangoproject.com/en/4.0/releases/3.2/">
+                frameworka Django</a> w języku python a komunikacja pomiędzy frontendem a API jest zrealizowana
+            poprzez moduł <a href="https://docs.python-requests.org/en/latest/">Requests</a>.
+        </p>
+        <p><img src="{% static 'images/frontend_views.jpg'%}" alt="Widoki stron w django" /></p>
+        <br>
+        <p>API również zostało wykonane w języku python przy pomocy Django oraz
+            <a href="https://www.django-rest-framework.org/">Django Rest Framework</a>.
+            Zachowuje się w nim model bazy danych oraz kod obliczający wartość ciągu.
+            Serializer przekłada model na obiekt json, natomiast views pozwalają na komunikację API z frontendem.
+            Połączenie z DB jest automatycznie wykonywane przez Django przy podaniu odpowiednich ustawień dla projektu.
+        </p>
+        <p><img src="{% static 'images/api_model.jpg'%}" alt="model bazy danych" /></p>
+        <p><img src="{% static 'images/api_serializer.jpg'%}" alt="serializer modelu" /></p>
+        <p><img src="{% static 'images/api_view.jpg'%}" alt="views - widoki API" /></p>
+        <p><img src="{% static 'images/api_db.jpg'%}" alt="Połączenie z bazą danych" /></p>
+        <br>
+        <p>Baza danych jest kontenerem Dockera i oprócz hasła i nazwy użytkownika nic nie zostało zmienione.</p>
+        <p><img src="{% static 'images/db_docker.jpg'%}" alt="docker-compose postresql" /></p>
+        <br>
+        <p>Wszystkie kontenery są połączone poprzez docker-compose.</p>
+        <p><img src="{% static 'images/dc.jpg'%}" alt="docker-compose" /></p>
+        <p>wszystkie kontenery są uruchamiane poprzez polecenie:</p>
+        <p><b>docker-compose up -d --build</b></p>
+    </div>
+</body>
+
+</html>
